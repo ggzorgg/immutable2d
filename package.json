@@ -1,0 +1,26 @@
+{
+  "name": "immutable2d",
+  "version": "0.0.1",
+  "description": "Immutable 2D geometry library for Javascript/Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ggzorgg/immutable2d.git"
+  },
+  "keywords": [
+    "immutable",
+    "geometry",
+    "typescript",
+    "library",
+    "utils"
+  ],
+  "author": "ggzorgg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ggzorgg/immutable2d/issues"
+  },
+  "homepage": "https://github.com/ggzorgg/immutable2d#readme"
+}
