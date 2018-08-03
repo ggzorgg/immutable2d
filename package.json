@@ -4,7 +4,7 @@
   "description": "Immutable 2D geometry library for Javascript/Typescript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register test/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,15 @@
   "bugs": {
     "url": "https://github.com/ggzorgg/immutable2d/issues"
   },
-  "homepage": "https://github.com/ggzorgg/immutable2d#readme"
+  "homepage": "https://github.com/ggzorgg/immutable2d#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.1.2",
+    "fast-check": "^1.4.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1"
+  }
 }
