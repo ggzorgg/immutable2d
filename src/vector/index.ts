@@ -1,3 +1,4 @@
+import toVector from './toVector'
 import Vector from './Vector'
 
-export { Vector }
+export { toVector, Vector }
