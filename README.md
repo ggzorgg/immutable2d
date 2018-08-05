@@ -1,7 +1,7 @@
 # <img src="docs/assets/LogoWeb_192.png" alt="Logo" width="24" height="24"> immutable2d
 
 [![npm version](https://badge.fury.io/js/immutable2d.svg)](https://badge.fury.io/js/immutable2d)
-[![](https://data.jsdelivr.com/v1/package/npm/immutable2d/badge)](https://www.jsdelivr.com/package/npm/immutable2d)
+[![hits](https://data.jsdelivr.com/v1/package/npm/immutable2d/badge)](https://www.jsdelivr.com/package/npm/immutable2d)
 [![dependencies Status](https://david-dm.org/ggzorgg/immutable2d/status.svg)](https://david-dm.org/ggzorgg/immutable2d)
 
 Immutable 2D geometry library for Javascript/Typescript
@@ -41,8 +41,8 @@ const v7 = toVector({ x, y })
 
 Vectors can also be created with the next functions:
 
-- [fromPolarToVector](./docs/Vector#from-polar-in-degrees-and-radians)
-- [fromPolarRadiansToVector](./docs/Vector#from-polar-in-degrees-and-radians)
+- [fromPolarToVector](./docs/Vector.md#from-polar-in-degrees-and-radians)
+- [fromPolarRadiansToVector](./docs/Vector.md#from-polar-in-degrees-and-radians)
 
 #### Operations - *Not available yet*
 
@@ -57,27 +57,27 @@ const v4 = add(v1, v2) // Function
 ```
 
 - Unary operators:
-  - [negate](./docs/Vector#negate)
-  - [negateX](./docs/Vector#negateX)
-  - [negateY](./docs/Vector#negateY)
-  - [normalize](./docs/Vector#normalize)
-  - [rotate](./docs/Vector#rotate): Rotates the vector by a rotation angle given in degrees
-  - [rotateRadians](./docs/Vector#rotateRadians): Same as rotate, but in radians
+  - [negate](./docs/Vector.md#negate)
+  - [negateX](./docs/Vector.md#negateX)
+  - [negateY](./docs/Vector.md#negateY)
+  - [normalize](./docs/Vector.md#normalize)
+  - [rotate](./docs/Vector.md#rotate): Rotates the vector by a rotation angle given in degrees
+  - [rotateRadians](./docs/Vector.md#rotateRadians): Same as rotate, but in radians
 - Binary operators:
   - Basic:
-    - [add](./docs/Vector#add)
-    - [addX](./docs/Vector#addX)
-    - [addY](./docs/Vector#addY)
-    - [substract](./docs/Vector#substract)
-    - [substractX](./docs/Vector#substractX)
-    - [substractY](./docs/Vector#substractY)
-    - [multiply](./docs/Vector#multiply)
-    - [multiplyX](./docs/Vector#multiplyX)
-    - [multiplyY](./docs/Vector#multiplyY)
-    - [divide](./docs/Vector#divide)
-    - [divideX](./docs/Vector#divideX)
-    - [divideY](./docs/Vector#divideY)
+    - [add](./docs/Vector.md#add)
+    - [addX](./docs/Vector.md#addX)
+    - [addY](./docs/Vector.md#addY)
+    - [substract](./docs/Vector.md#substract)
+    - [substractX](./docs/Vector.md#substractX)
+    - [substractY](./docs/Vector.md#substractY)
+    - [multiply](./docs/Vector.md#multiply)
+    - [multiplyX](./docs/Vector.md#multiplyX)
+    - [multiplyY](./docs/Vector.md#multiplyY)
+    - [divide](./docs/Vector.md#divide)
+    - [divideX](./docs/Vector.md#divideX)
+    - [divideY](./docs/Vector.md#divideY)
   - Functional:
-    - [applyX](./docs/Vector#applyX): Applies a function to the X component
-    - [applyY](./docs/Vector#applyY): Applies a function to the Y component
-    - [applyBoth](./docs/Ve-r#applyBoth): Applies a function to both components
+    - [applyX](./docs/Vector.md#applyX): Applies a function to the X component
+    - [applyY](./docs/Vector.md#applyY): Applies a function to the Y component
+    - [applyBoth](./docs/Vector.md#applyBoth): Applies a function to both components
