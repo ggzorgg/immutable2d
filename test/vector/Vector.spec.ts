@@ -1,40 +1,21 @@
-import * as fc from 'fast-check'
+import { expect } from 'chai'
 import 'mocha'
 import { Vector } from '../../src/vector'
-import { anyNumber, anyNumberTuple, anyVectorObject } from '../utils'
+import { assertWithAllVectorKindsUnary } from './checkers'
 
-describe('A vector', () => {
+describe('A Vector', () => {
   it('can be instantiated with two parameters', () => {
-    fc.assert(
-      fc.property(
-        anyNumber, anyNumber,
-        (x, y) => {
-          const v = new Vector(x, y)
-          return v.x === x && v.y === y
-        }
-      )
-    )
+    const x = 10
+    const y = 20
+    const r = new Vector(x, y)
+
+    expect(r.x).to.equal(x)
+    expect(r.y).to.equal(y)
   })
-  it('can be instantiated with a tuple of numbers', () => {
-    fc.assert(
-      fc.property(
-        anyNumberTuple,
-        t => {
-          const v = new Vector(t)
-          return v.x === t[0] && v.y === t[1]
-        }
-      )
-    )
-  })
-  it('can be instantiated with a vector like object', () => {
-    fc.assert(
-      fc.property(
-        anyVectorObject,
-        o => {
-          const v = new Vector(o)
-          return v.x === o.x && v.y === o.y
-        }
-      )
-    )
-  })
+  assertWithAllVectorKindsUnary('can be instantiated', v => new Vector(v))(
+    (v, r) => {
+      expect(r.x).to.equal(v.x)
+      expect(r.x).to.equal(v.x)
+    }
+  )
 })
