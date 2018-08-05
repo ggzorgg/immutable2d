@@ -1,4 +1,4 @@
-import { VectorObject } from '.'
+import { VectorLike, VectorObject } from '.'
 import { isVectorObject } from './Utils'
 
 export default class Vector implements VectorObject {
@@ -6,8 +6,8 @@ export default class Vector implements VectorObject {
   public readonly y: number
 
   constructor(x: number, y: number)
-  constructor(values: [number, number] | VectorObject)
-  constructor(x: number | [number, number] | VectorObject, y?: number) {
+  constructor(values: VectorLike)
+  constructor(x: number | VectorLike, y?: number) {
     if (typeof x === 'number') {
       this.x = x
       this.y = y as number
