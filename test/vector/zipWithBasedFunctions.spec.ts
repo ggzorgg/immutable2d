@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import { zip } from 'lodash'
 import 'mocha'
-import { add, addX, addY } from '../../src/vector'
+import * as ops from '../../src/vector/zipWithBasedFunctions'
 import { assertWithAllVectorKindsBinary, BinaryVectorAssertion, BinaryVectorOperation } from './checkers'
 
 type BinaryFunctionTestDefinition = [
@@ -11,26 +11,26 @@ type BinaryFunctionTestDefinition = [
   [BinaryVectorOperation, BinaryVectorOperation, BinaryVectorOperation] // Vector function
 ]
 const zipWithLikeBasedFunctions: BinaryFunctionTestDefinition[] = [
-  ['add', 'sum', (a, b) => a + b, [add, addX, addY]],
+  ['add', 'sum', (a, b) => a + b, [ops.add, ops.addX, ops.addY]],
 ]
 
 type ZipWithLikeAssertion = (f: (a: number, b: number) => number) => BinaryVectorAssertion
-const zipWithLikeAssertions: Array<[ZipWithLikeAssertion, string]> = [
+const zipWithLikeAssertions: Array<[ZipWithLikeAssertion, string, string]> = [
   // zipWith
   [f => (v1, v2, r) => {
     expect(r.x).to.equal(f(v1.x, v2.x))
     expect(r.y).to.equal(f(v1.y, v2.y))
-  }, 'applied component-wise'],
+  }, 'applied component-wise', ''],
   // zipWithX
   [f => (v1, v2, r) => {
     expect(r.x).to.equal(f(v1.x, v2.x))
     expect(r.y).to.equal(v1.y)
-  }, 'applied only to the X component'],
+  }, 'applied only to the X component', 'X'],
   // zipWithY
   [f => (v1, v2, r) => {
     expect(r.x).to.equal(v1.x)
     expect(r.y).to.equal(f(v1.y, v2.y))
-  }, 'applied only to the Y component'],
+  }, 'applied only to the Y component', 'Y'],
 ]
 
 zipWithLikeBasedFunctions.forEach(
@@ -38,8 +38,8 @@ zipWithLikeBasedFunctions.forEach(
     zip(zipWithLikeFunctions, zipWithLikeAssertions).forEach(
       ([f, assertionDefinition]) => {
         const func = f as BinaryVectorOperation
-        const [assertion, predicate] = assertionDefinition as [ZipWithLikeAssertion, string]
-        describe(`The "${name}" function`, () => {
+        const [assertion, predicate, suffix] = assertionDefinition as [ZipWithLikeAssertion, string, string]
+        describe(`The "${name}${suffix}" function`, () => {
           assertWithAllVectorKindsBinary(
             `should return the ${action} ${predicate} of two vectors`, func)(assertion(singleFunction))
         })
