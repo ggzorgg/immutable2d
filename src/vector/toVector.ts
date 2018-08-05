@@ -1,5 +1,5 @@
+import { VectorObject } from '.'
 import Vector from './Vector'
-import { VectorObject } from './VectorObject'
 
 export function toVector(x: number, y: number): Vector
 export function toVector(values: [number, number] | VectorObject): Vector

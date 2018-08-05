@@ -1,5 +1,4 @@
-import { VectorLike } from '../Types'
-import { VectorObject } from './VectorObject'
+import { VectorLike, VectorObject } from '.'
 
 export function isVectorObject(value: any): value is VectorObject {
   const vector = value as VectorObject
