@@ -12,6 +12,7 @@ type BinaryFunctionTestDefinition = [
 ]
 const zipWithLikeBasedFunctions: BinaryFunctionTestDefinition[] = [
   ['add', 'sum', (a, b) => a + b, [ops.add, ops.addX, ops.addY]],
+  ['substract', 'difference', (a, b) => a - b, [ops.substract, ops.substractX, ops.substractY]]
 ]
 
 type ZipWithLikeAssertion = (f: (a: number, b: number) => number) => BinaryVectorAssertion
