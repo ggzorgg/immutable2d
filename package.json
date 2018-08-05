@@ -25,10 +25,12 @@
   "homepage": "https://github.com/ggzorgg/immutable2d#readme",
   "devDependencies": {
     "@types/chai": "^4.1.4",
+    "@types/lodash": "^4.14.110",
     "@types/mocha": "^5.2.5",
     "chai": "^4.1.2",
     "eslint": "^5.3.0",
     "fast-check": "^1.4.0",
+    "lodash": "^4.17.10",
     "mocha": "^5.2.0",
     "ts-node": "^7.0.0",
     "tslint": "^5.11.0",
