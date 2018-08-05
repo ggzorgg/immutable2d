@@ -14,7 +14,7 @@ describe('The "isVectorObject" function', () => {
 })
 
 describe('The "getComponents" function', () => {
-  it('should return the tuple when the parameter is a tuple', () => {
+  it('should return the same tuple when the parameter is a tuple', () => {
     const obj: [number, number] = [10, 10]
     expect(getComponentsAsTuple(obj)).to.equal(obj)
   })
@@ -36,7 +36,7 @@ describe('The "getComponentsAsObject" function', () => {
     expect(rx).to.be.equal(x)
     expect(ry).to.be.equals(y)
   })
-  it('should return the same object wehn parameter is already a VectorObject', () => {
+  it('should return the same object when parameter is already a VectorObject', () => {
     const obj = { x: 10, y: 10 }
     const result = getComponentsAsObject(obj)
     expect(result).to.be.equal(obj)
