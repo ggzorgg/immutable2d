@@ -1,5 +1,4 @@
-import { Vector } from '.'
-import { VectorLike } from '../Types'
+import { Vector, VectorLike } from '.'
 import { getComponentsAsTuple } from './Utils'
 
 export const zipWith = (f: (a: number, b: number) => number) => (v1: VectorLike, v2: VectorLike) => {
