@@ -20,7 +20,8 @@
             true,
             "spaces",
             2
-        ]
+        ],
+        "no-unused-expression": false
     },
     "rulesDirectory": []
 }
