@@ -1,0 +1,18 @@
+---
+extends: 
+  - "tslint:recommended"
+rules:
+  quotemark: 
+    - true
+    - single
+  semicolon: 
+    - true
+    - never
+  trailing-comma: false
+  interface-name: false
+  arrow-parens: false
+  indent:
+    - true
+    - spaces
+    - 2
+  no-unused-expression: false
