@@ -1,6 +1,4 @@
-import { VectorLike } from '../../src/Types'
-import { Vector } from '../../src/vector'
-import { VectorObject } from '../../src/vector/VectorObject'
+import { Vector, VectorLike, VectorObject } from '../../src/vector'
 
 type UnaryVectorOperation = (v: VectorLike) => Vector
 type UnaryVectorAssertion = (v: VectorObject, r: VectorObject) => void
