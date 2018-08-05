@@ -14,27 +14,27 @@ describe('A vector', () => {
         }
       )
     )
-  }),
-    it('can be instantiated with a tuple of numbers', () => {
-      fc.assert(
-        fc.property(
-          anyNumberTuple,
-          t => {
-            const v = new Vector(t)
-            return v.x === t[0] && v.y === t[1]
-          }
-        )
+  })
+  it('can be instantiated with a tuple of numbers', () => {
+    fc.assert(
+      fc.property(
+        anyNumberTuple,
+        t => {
+          const v = new Vector(t)
+          return v.x === t[0] && v.y === t[1]
+        }
       )
-    }),
-    it('can be instantiated with a vector like object', () => {
-      fc.assert(
-        fc.property(
-          anyVectorObject,
-          o => {
-            const v = new Vector(o)
-            return v.x === o.x && v.y === o.y
-          }
-        )
+    )
+  })
+  it('can be instantiated with a vector like object', () => {
+    fc.assert(
+      fc.property(
+        anyVectorObject,
+        o => {
+          const v = new Vector(o)
+          return v.x === o.x && v.y === o.y
+        }
       )
-    })
+    )
+  })
 })
