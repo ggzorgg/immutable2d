@@ -13,3 +13,11 @@ export function getComponents(value: VectorLike): [number, number] {
     return value
   }
 }
+
+export function getComponentsAsObject(value: VectorLike): VectorObject {
+  if (isVectorObject(value)) {
+    return value
+  } else {
+    return { x: value[0], y: value[1] }
+  }
+}
