@@ -1,8 +1,7 @@
 import * as fc from 'fast-check'
 import 'mocha'
 import { toVector } from '../../src/vector'
-
-const anyNumber = fc.double(Number.MIN_VALUE, Number.MAX_VALUE)
+import { anyNumber } from '../utils'
 
 describe('The "toVector" function', () => {
   it('should return a Vector when called with two parameters', () => {

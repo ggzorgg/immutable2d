@@ -1,11 +1,7 @@
 import * as fc from 'fast-check'
 import 'mocha'
-import { add, toVector } from '../../src/vector'
-
-const anyNumber = fc.double(Number.MIN_VALUE, Number.MAX_VALUE)
-const anyNumberTuple = fc.tuple(anyNumber, anyNumber)
-const anyVector = anyNumberTuple.map(toVector)
-const anyVectorObject = anyNumberTuple.map(([x, y]) => ({ x, y }))
+import { add } from '../../src/vector'
+import { anyNumberTuple, anyVector, anyVectorObject } from '../utils'
 
 describe('The "add" function', () => {
   it('should return the component-wise sum of two vectors', () => {
