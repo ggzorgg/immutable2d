@@ -6,7 +6,7 @@ export function isVectorObject(value: any): value is VectorObject {
   return vector.x !== undefined && vector.y !== undefined
 }
 
-export function getComponents(value: VectorLike): [number, number] {
+export function getComponentsAsTuple(value: VectorLike): [number, number] {
   if (isVectorObject(value)) {
     return [value.x, value.y]
   } else {
