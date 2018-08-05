@@ -1,6 +1,6 @@
 import add from './add'
 import toVector from './toVector'
 import Vector from './Vector'
-import { zipWith } from './zipWith'
+import { zipWith, zipWithX, zipWithY } from './zipWith'
 
-export { add, toVector, Vector, zipWith }
+export { add, toVector, Vector, zipWith, zipWithX, zipWithY }
