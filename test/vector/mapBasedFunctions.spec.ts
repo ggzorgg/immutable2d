@@ -18,6 +18,11 @@ const mapLikeBasedFunctions: MapLikeBasedFunctionDefinition[] = [
     v => ops.multiply(scalar, v),
     v => ops.multiplyX(scalar, v),
     v => ops.multiplyY(scalar, v)
+  ]],
+  ['divide', 'division', a => a / scalar, [
+    v => ops.divide(scalar, v),
+    v => ops.divideX(scalar, v),
+    v => ops.divideY(scalar, v)
   ]]
 ]
 
