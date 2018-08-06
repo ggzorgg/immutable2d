@@ -12,6 +12,7 @@ export type MapLikeBasedFunctionDefinition = [
 const f = (a: number) => a * 2
 const mapLikeBasedFunctions: MapLikeBasedFunctionDefinition[] = [
   ['map', 'unary function aplication', f, [ops.map(f), ops.mapX(f), ops.mapY(f)]],
+  ['negate', 'negation', a => -a, [ops.negate, ops.negateX, ops.negateY]]
 ]
 
 mapLikeBasedFunctions.forEach(
