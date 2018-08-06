@@ -21,6 +21,6 @@ export const zipWithYAssertion: FunctionBasedBinaryVectorAssertion = f => (v1, v
 export type FunctionBasedBinaryVectorAssertionDefinition = [FunctionBasedBinaryVectorAssertion, string, string]
 export const allZipWithLikeAssertions: FunctionBasedBinaryVectorAssertionDefinition[] = [
   [zipWithAssertion, 'applied component-wise', ''],
-  [zipWithXAssertion, 'applied only to the X component', 'X'],
-  [zipWithYAssertion, 'applied only to the Y component', 'Y'],
+  [zipWithXAssertion, 'applied only to the X components', 'X'],
+  [zipWithYAssertion, 'applied only to the Y components', 'Y'],
 ]
