@@ -1,18 +1,22 @@
 # <img src="docs/assets/LogoWeb_192.png" alt="Logo" width="24" height="24"> immutable2d
 
-[![npm version](https://badge.fury.io/js/immutable2d.svg)](https://badge.fury.io/js/immutable2d)
-[![hits](https://data.jsdelivr.com/v1/package/npm/immutable2d/badge)](https://www.jsdelivr.com/package/npm/immutable2d)
-[![dependencies Status](https://david-dm.org/ggzorgg/immutable2d/status.svg)](https://david-dm.org/ggzorgg/immutable2d)
+[![Version](https://img.shields.io/npm/v/immutable2d.svg)](https://www.npmjs.com/package/immutable2d)
+[![Hits](https://data.jsdelivr.com/v1/package/npm/immutable2d/badge)](https://www.jsdelivr.com/package/npm/immutable2d)
+[![Downloads](https://img.shields.io/npm/dm/immutable2d.svg)](https://npmcharts.com/compare/immutable2d?minimal=true)
+[![Dependencies Status](https://david-dm.org/ggzorgg/immutable2d/status.svg)](https://david-dm.org/ggzorgg/immutable2d)
+[![Coverage Status](https://coveralls.io/repos/github/ggzorgg/immutable2d/badge.svg?branch=master)](https://coveralls.io/github/ggzorgg/immutable2d?branch=master)
+[![GitHub license](https://img.shields.io/github/license/ggzorgg/immutable2d.svg)](https://github.com/ggzorgg/immutable2d/blob/master/LICENSE)
+
 
 Immutable 2D geometry library for Javascript/Typescript
 
 ## Goals
 
-- Provide 2D geometry primitives and utility functions for manipulation.
+- Provide 2D geometry primitives and functions.
 - Static typing.
 - Composable functions to be used in conjuction with functional programming.
-- High performance
-- 100% Test coverage
+- High performance.
+- 100% Test coverage.
 
 ## Usage
 
@@ -46,14 +50,16 @@ Vectors can also be created with the next functions:
 
 #### Operations - *Not available yet*
 
+All the operations are static for ease of composition and usability.
+
 ```typescript
 import { add, Vector } from 'immutable2d/vector'
 
 const v1 = new Vector(10, 10)
 const v2 = new Vector(15, 15)
 
-const v3 = v1.add(v2) // Instance method
-const v4 = add(v1, v2) // Function
+const v3 = add(v1, v2)
+const v4 = add(v1, [12, 34])
 ```
 
 - Unary operators:
@@ -77,7 +83,24 @@ const v4 = add(v1, v2) // Function
     - [divide](./docs/Vector.md#divide)
     - [divideX](./docs/Vector.md#divideX)
     - [divideY](./docs/Vector.md#divideY)
-  - Functional:
-    - [applyX](./docs/Vector.md#applyX): Applies a function to the X component
-    - [applyY](./docs/Vector.md#applyY): Applies a function to the Y component
-    - [applyBoth](./docs/Vector.md#applyBoth): Applies a function to both components
+  - Functional (curried by default):
+    - [map](./docs/Vector.md#map): Applies a function to both components
+    - [mapX](./docs/Vector.md#mapX): Applies a function only to the X component
+    - [mapY](./docs/Vector.md#mapY): Same as `mapX`, but only to the Y component
+    - [zipWith](./docs/Vector.md#zip): Returns a Vector whose components are the result of applying a binary function component-wise to the components
+    - [zipWithX](./docs/Vector.md#zipWithX): Same as `zipWith`, but only applies the function to the X component and it leaves untouched the Y component
+    - [zipWithY](./docs/Vector.md#zipWithY): Same as `zipWithX`, but with the Y component
+
+The `map` and `zipWith` functions let you define custom operators easily. In fact, many of the operations can be defined in terms of these two:
+
+```typescript
+import { map, zipWith } from 'immutable2d/vector'
+
+const negate2 = map(a => -a)
+const add2 = zipWith((a, b) => a + b)
+```
+
+Note that the actual implementations are different, this is to allow define all the `zipWith` based and `map` based operations in one line.
+
+[See map based functions source](./src/vector/mapBasedFunctions.ts)\
+[See zipWith based functions source](./src/vector/zipWithBasedFunctions.ts)
