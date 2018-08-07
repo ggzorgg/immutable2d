@@ -3,8 +3,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: {
-    'immutable2d': './src/index.ts',
-    'immutable2d.min': './src/index.ts'
+    'immutable2d': './src/bundle.ts',
+    'immutable2d.min': './src/bundle.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "Immutable 2D geometry library for Javascript/Typescript",
   "main": "index.js",
-  "typings": "index.d.ts",
+  "typings": "**/*.d.ts",
   "jsnext:main": "lib-esm/index.js",
   "module": "lib-esm/index.js",
   "scripts": {
