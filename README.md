@@ -25,6 +25,24 @@ Immutable 2D geometry library for Javascript/Typescript
 npm install immutable2d
 ```
 
+CommonJS:
+
+```javascript
+const { add, negate, Vector } = require('immutable2d/vector')
+```
+
+Typescript:
+
+```typescript
+import { add, negate, Vector } from 'immutable2d/vector'
+```
+
+ES6 (module):
+
+```javascript
+import { add, negate, Vector } from 'immutable2d/lib-esm/vector'
+```
+
 ### CDN
 
 For CDN, you can use [unpkg](https://unpkg.com/):
@@ -34,6 +52,10 @@ https://unpkg.com/immutable2d/dist/immutable2d.min.js
 Or [jsdelivr](https://www.jsdelivr.com/):
 
 https://cdn.jsdelivr.net/npm/immutable2d/dist/immutable2d.min.js
+
+```javascript
+const { add, negate, Vector } = immutable2d.vector
+```
 
 ## Usage
 
