@@ -7,7 +7,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/ggzorgg/immutable2d/badge.svg?branch=master)](https://coveralls.io/github/ggzorgg/immutable2d?branch=master)
 [![GitHub license](https://img.shields.io/github/license/ggzorgg/immutable2d.svg)](https://github.com/ggzorgg/immutable2d/blob/master/LICENSE)
 
-
 Immutable 2D geometry library for Javascript/Typescript
 
 ## Goals
@@ -17,6 +16,24 @@ Immutable 2D geometry library for Javascript/Typescript
 - Composable functions to be used in conjuction with functional programming.
 - High performance.
 - 100% Test coverage.
+
+## Installation
+
+### npm
+
+```bash
+npm install immutable2d
+```
+
+### CDN
+
+For CDN, you can use [unpkg](https://unpkg.com/):
+
+https://unpkg.com/immutable2d/dist/immutable2d.min.js
+
+Or [jsdelivr](https://www.jsdelivr.com/):
+
+https://cdn.jsdelivr.net/npm/immutable2d/dist/immutable2d.min.js
 
 ## Usage
 
