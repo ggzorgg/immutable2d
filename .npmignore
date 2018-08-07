@@ -1,0 +1,10 @@
+docs
+node_modules
+test
+src
+.eslintignore
+.eslintrc.yml
+package-lock.json
+tslint.yaml
+tsconfig.json
+webpack.config.json
