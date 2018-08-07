@@ -1,6 +1,6 @@
 {
   "name": "immutable2d",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Immutable 2D geometry library for Javascript/Typescript",
   "main": "index.js",
   "typings": "index.d.ts",
