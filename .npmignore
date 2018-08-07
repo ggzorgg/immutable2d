@@ -8,3 +8,4 @@ package-lock.json
 tslint.yaml
 tsconfig.json
 webpack.config.json
+dist/lib
