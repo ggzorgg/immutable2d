@@ -7,7 +7,7 @@
   "jsnext:main": "lib-esm/index.js",
   "module": "lib-esm/index.js",
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "npm run build && shx cp -r lib/*",
     "clean": "shx rm -rf dist lib lib-esm",
     "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && webpack",
     "test": "mocha -r ts-node/register test/**/*.spec.*",
