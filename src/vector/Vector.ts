@@ -1,5 +1,5 @@
 import { VectorLike, VectorObject } from '.'
-import { isVectorObject } from './Utils'
+import { isVectorObject } from './utils'
 
 export default class Vector implements VectorObject {
   public readonly x: number

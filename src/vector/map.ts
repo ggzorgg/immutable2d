@@ -1,5 +1,5 @@
 import { Vector, VectorLike } from '.'
-import { getComponentsAsTuple } from './Utils'
+import { getComponentsAsTuple } from './utils'
 
 export const map = (f: (a: number) => number) => (v: VectorLike) => {
   const [x, y] = getComponentsAsTuple(v)
