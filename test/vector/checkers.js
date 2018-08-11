@@ -1,7 +1,7 @@
 const fc = require('fast-check')
 const { it } = require('mocha')
 const { anyNumberTuple, anyVectorObject, anyVector } = require('../utils')
-const { getComponentsAsObject } = require('../../src/vector/utils')
+const { getComponentsAsObject } = require('../../src/vector/Utils')
 const { Vector } = require('../../src/vector/')
 const { zip } = require('lodash')
 

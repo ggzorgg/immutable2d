@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import 'mocha'
-import { getComponentsAsObject, getComponentsAsTuple, isVectorObject } from '../../src/vector/utils'
+import { getComponentsAsObject, getComponentsAsTuple, isVectorObject } from '../../src/vector/Utils'
 
 describe('The "isVectorObject" function', () => {
   it('should return true when object has both x and y properties', () => {
