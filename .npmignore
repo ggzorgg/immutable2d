@@ -9,3 +9,6 @@ tslint.yaml
 tsconfig.json
 webpack.config.json
 dist/lib
+coverage
+.nyc_output
+.travis.yml
