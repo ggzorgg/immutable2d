@@ -1,5 +1,6 @@
-import { VectorLike } from '.'
 import { map, mapX, mapY } from './map'
+import { VectorLike, VectorObject } from './types'
+import { Vector } from './Vector'
 
 const allMapLikeFunctions = [map, mapX, mapY]
 const createAllMapLikeFunctions = (f: (a: number) => number) => allMapLikeFunctions.map(g => g(f))

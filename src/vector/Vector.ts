@@ -1,7 +1,7 @@
-import { VectorLike, VectorObject } from '.'
+import { VectorLike, VectorObject } from './types'
 import { isVectorObject } from './Utils'
 
-export default class Vector implements VectorObject {
+export class Vector implements VectorObject {
   public readonly x: number
   public readonly y: number
 

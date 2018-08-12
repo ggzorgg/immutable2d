@@ -1,3 +1,5 @@
+import { VectorLike, VectorObject } from './types'
+import { Vector } from './Vector'
 import { zipWith, zipWithX, zipWithY } from './zipWith'
 
 const allZipWithLikeFunctions = [zipWith, zipWithX, zipWithY]

@@ -1,5 +1,5 @@
-import { VectorLike } from '.'
-import Vector from './Vector'
+import { VectorLike } from './types'
+import { Vector } from './Vector'
 
 export function toVector(x: number, y: number): Vector
 export function toVector(values: VectorLike): Vector
