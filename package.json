@@ -33,10 +33,13 @@
   "nyc": {
     "extension": [
       ".ts",
-      ".tsx"
+      ".js"
     ],
     "exclude": [
-      "**/*.d.ts"
+      "**/*.d.ts",
+      "webpack.config.js",
+      "coverage",
+      "test/**/*"
     ],
     "reporter": [
       "html"
