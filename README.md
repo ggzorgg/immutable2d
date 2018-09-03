@@ -1,10 +1,11 @@
 # <img src="docs/assets/LogoWeb_192.png" alt="Logo" width="24" height="24"> immutable2d
 
-[![Version](https://img.shields.io/npm/v/immutable2d.svg)](https://www.npmjs.com/package/immutable2d)
-[![Hits](https://data.jsdelivr.com/v1/package/npm/immutable2d/badge)](https://www.jsdelivr.com/package/npm/immutable2d)
+[![Build Status](https://travis-ci.org/ggzorgg/immutable2d.svg?branch=master)](https://travis-ci.org/ggzorgg/immutable2d)
+[![codecov](https://codecov.io/gh/ggzorgg/immutable2d/branch/master/graph/badge.svg)](https://codecov.io/gh/ggzorgg/immutable2d)
 [![Downloads](https://img.shields.io/npm/dm/immutable2d.svg)](https://npmcharts.com/compare/immutable2d?minimal=true)
+[![Hits](https://data.jsdelivr.com/v1/package/npm/immutable2d/badge)](https://www.jsdelivr.com/package/npm/immutable2d)
+[![Version](https://img.shields.io/npm/v/immutable2d.svg)](https://www.npmjs.com/package/immutable2d)
 [![Dependencies Status](https://david-dm.org/ggzorgg/immutable2d/status.svg)](https://david-dm.org/ggzorgg/immutable2d)
-[![Coverage Status](https://coveralls.io/repos/github/ggzorgg/immutable2d/badge.svg?branch=master)](https://coveralls.io/github/ggzorgg/immutable2d?branch=master)
 [![GitHub license](https://img.shields.io/github/license/ggzorgg/immutable2d.svg)](https://github.com/ggzorgg/immutable2d/blob/master/LICENSE)
 
 Immutable 2D geometry library for Javascript/Typescript
