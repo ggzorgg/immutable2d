@@ -8,13 +8,18 @@
 [![Dependencies Status](https://david-dm.org/ggzorgg/immutable2d/status.svg)](https://david-dm.org/ggzorgg/immutable2d)
 [![GitHub license](https://img.shields.io/github/license/ggzorgg/immutable2d.svg)](https://github.com/ggzorgg/immutable2d/blob/master/LICENSE)
 
-Immutable 2D geometry library for Javascript/Typescript
+Immutable 2D geometry library for Javascript/Typescript.
 
-## Goals
+## Features
 
-- Provide 2D geometry primitives and functions.
-- Static typing.
-- Composable functions to be used in conjuction with functional programming.
+- 2D geometry primitives and functions:
+  - [X] Vector
+  - [ ] Point
+  - [ ] Box
+  - [ ] Circle
+  - [ ] Polygon
+- Type definitions.
+- Composable functions.
 - High performance.
 - 100% Test coverage.
 
@@ -88,59 +93,52 @@ Vectors can also be created with the next functions:
 - [fromPolarToVector](./docs/Vector.md#from-polar-in-degrees-and-radians)
 - [fromPolarRadiansToVector](./docs/Vector.md#from-polar-in-degrees-and-radians)
 
-#### Operations - *Not available yet*
+#### Operations
 
-All the operations are static for ease of composition and usability.
+- All operations are **static** for ease of composability.
+- All operations work with [`VectorLike`](./docs/Vector.md#VectorLike) objects. These objects are either a tuple (an array with at least two elements, in Javascript) or an object with `x` and `y` properties.
+- **Many operations have corresponding X and Y functions**, that only operate over the specified component. e.g. `negateX` only negates the X component.
 
 ```typescript
-import { add, Vector } from 'immutable2d/vector'
+import { add, addX, Vector } from 'immutable2d/vector'
 
 const v1 = new Vector(10, 10)
-const v2 = new Vector(15, 15)
 
-const v3 = add(v1, v2)
-const v4 = add(v1, [12, 34])
+const v3 = add({ x: 20, y: 20 }, v1) // Vector { x: 30, y: 30 }
+const v4 = addX(v1, [30, 30]) // Vector { x: 40, y: 10 }
 ```
 
 - Unary operators:
-  - [negate](./docs/Vector.md#negate)
-  - [negateX](./docs/Vector.md#negateX)
-  - [negateY](./docs/Vector.md#negateY)
-  - [normalize](./docs/Vector.md#normalize)
-  - [rotate](./docs/Vector.md#rotate): Rotates the vector by a rotation angle given in degrees
-  - [rotateRadians](./docs/Vector.md#rotateRadians): Same as rotate, but in radians
+  - [flip](./docs/Vector.md#flip): Flips the components of the vector.
+  - [length](./docs/Vector.md#length): Gets the length of the vector.
+  - [lengthSquared](./docs/Vector.md#lengthSquared): Gets the squared length of a Vector.
+  - [negate](./docs/Vector.md#negate): Negates both components.
+  - [normalize](./docs/Vector.md#normalize): Normalizes a vector.
+  - [rotate](./docs/Vector.md#rotate): Rotates the vector by a rotation angle given in degrees.
+  - [rotateRadians](./docs/Vector.md#rotateRadians): Same as rotate, but in radians.
 - Binary operators:
   - Basic:
-    - [add](./docs/Vector.md#add)
-    - [addX](./docs/Vector.md#addX)
-    - [addY](./docs/Vector.md#addY)
-    - [substract](./docs/Vector.md#substract)
-    - [substractX](./docs/Vector.md#substractX)
-    - [substractY](./docs/Vector.md#substractY)
-    - [multiply](./docs/Vector.md#multiply)
-    - [multiplyX](./docs/Vector.md#multiplyX)
-    - [multiplyY](./docs/Vector.md#multiplyY)
-    - [divide](./docs/Vector.md#divide)
-    - [divideX](./docs/Vector.md#divideX)
-    - [divideY](./docs/Vector.md#divideY)
+    - [add](./docs/Vector.md#add): Adds two vectors component-wise.
+    - [substract](./docs/Vector.md#substract): Substracts a vector from another component-wise.
+    - [multiply](./docs/Vector.md#multiply): Multiplies each component by a number.
+    - [divide](./docs/Vector.md#divide): Divides each component by a number.
+    - [dotProduct](./docs/Vector.md#): Returns the dot product of two vectors.
   - Functional (curried by default):
-    - [map](./docs/Vector.md#map): Applies a function to both components
-    - [mapX](./docs/Vector.md#mapX): Applies a function only to the X component
-    - [mapY](./docs/Vector.md#mapY): Same as `mapX`, but only to the Y component
-    - [zipWith](./docs/Vector.md#zip): Returns a Vector whose components are the result of applying a binary function component-wise to the components
-    - [zipWithX](./docs/Vector.md#zipWithX): Same as `zipWith`, but only applies the function to the X component and it leaves untouched the Y component
-    - [zipWithY](./docs/Vector.md#zipWithY): Same as `zipWithX`, but with the Y component
+    - [fold](./docs/Vector.md#fold): Applies a binary function with both components of a vector.
+    - [map](./docs/Vector.md#map): Applies a function to each component of a vector.
+    - [zipWith](./docs/Vector.md#zipWith): Returns a Vector whose components are the result of applying a binary function component-wise.
 
-The `map` and `zipWith` functions let you define custom operators easily. In fact, many of the operations can be defined in terms of these two:
+The `fold`, `map` and `zipWith` functions let you define custom operators easily. In fact, many operations can be defined in terms of these three:
 
 ```typescript
-import { map, zipWith } from 'immutable2d/vector'
+import { flip, map, toVector, zipWith } from 'immutable2d/vector'
 
+const flip2 = fold((x, y) => toVector(y, x))
 const negate2 = map(a => -a)
 const add2 = zipWith((a, b) => a + b)
 ```
 
-Note that the actual implementations are different, this is to allow define all the `zipWith` based and `map` based operations in one line.
+Note that the actual implementations are a little different; this is to allow to define all the `map` and `zipWith` based operations in one line.
 
 [See map based functions source](./src/vector/mapBasedFunctions.ts)\
 [See zipWith based functions source](./src/vector/zipWithBasedFunctions.ts)
