@@ -20,3 +20,5 @@ rules:
     - spaces
     - 2
   no-unused-expression: false
+  object-literal-sort-keys: false
+  
