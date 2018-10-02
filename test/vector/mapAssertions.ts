@@ -18,9 +18,25 @@ export const mapYAssertion: FunctionBasedUnaryVectorAssertion = f => (v, r) => {
   expect(r.y).to.equal(f(v.y))
 }
 
-export type FunctionBasedUnaryVectorAssertionDefinition = [FunctionBasedUnaryVectorAssertion, string, string]
+export interface FunctionBasedUnaryVectorAssertionDefinition {
+  assertion: FunctionBasedUnaryVectorAssertion
+  predicate: string
+  suffix: string
+}
 export const allMapLikeAssertions: FunctionBasedUnaryVectorAssertionDefinition[] = [
-  [mapAssertion, 'applied to both components', ''],
-  [mapXAssertion, 'applied only to the X component', 'X'],
-  [mapYAssertion, 'applied only to the Y component', 'Y'],
+  {
+    assertion: mapAssertion,
+    predicate: 'applied to both components',
+    suffix: ''
+  },
+  {
+    assertion: mapXAssertion,
+    predicate: 'applied only to the X component',
+    suffix: 'X'
+  },
+  {
+    assertion: mapYAssertion,
+    predicate: 'applied only to the Y component',
+    suffix: 'Y'
+  }
 ]
