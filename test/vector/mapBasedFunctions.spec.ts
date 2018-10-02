@@ -37,7 +37,7 @@ const mapLikeBasedFunctions = [
       v => ops.divide(scalar, v),
       v => ops.divideX(scalar, v),
       v => ops.divideY(scalar, v)
-    ]
+    ] as UnaryVectorOperation[]
   }
 ]
 
