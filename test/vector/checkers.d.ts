@@ -1,21 +1,21 @@
 import { Vector, VectorLike, VectorObject } from '../../src/vector'
 
-type UnaryVectorOperation = (v: VectorLike) => Vector
-type UnaryVectorAssertion = (v: VectorObject, r: VectorObject) => void
-type UnaryVectorPropertyAssertion = (v: VectorObject, r: VectorObject) => boolean
+type UnaryVectorOperation<R> = (v: VectorLike) => R
+type UnaryVectorAssertion<R> = (v: VectorObject, r: R) => void
+type UnaryVectorPropertyAssertion<R> = (v: VectorObject, r: R) => boolean
 
-type BinaryVectorOperation = (v1: VectorLike, v2: VectorLike) => Vector
-type BinaryVectorAssertion = (v1: VectorObject, v2: VectorObject, r: VectorObject) => void
-type BinaryVectorPropertyAssertion = (v1: VectorObject, v2: VectorObject, r: VectorObject) => boolean
+type BinaryVectorOperation<R> = (v1: VectorLike, v2: VectorLike) => R
+type BinaryVectorAssertion<R> = (v1: VectorObject, v2: VectorObject, r: R) => void
+type BinaryVectorPropertyAssertion<R> = (v1: VectorObject, v2: VectorObject, r: R) => boolean
 
 export declare const assertWithAllVectorKindsUnary:
-  (message: string, operation: UnaryVectorOperation) => (assertion: UnaryVectorAssertion) => void
+  <R>(message: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorAssertion<R>) => void
 
 export declare const checkPropertyWithAllVectorKindsUnary:
-  (message: string, operation: UnaryVectorOperation) => (assertion: UnaryVectorPropertyAssertion) => void
+  <R>(message: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorPropertyAssertion<R>) => void
 
 export declare const assertWithAllVectorKindsBinary:
-  (message: string, operation: BinaryVectorOperation) => (assertion: BinaryVectorAssertion) => void
+  <R>(message: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorAssertion<R>) => void
 
 export declare const checkPropertyWithAllVectorKindsBinary:
-  (message: string, operation: BinaryVectorOperation) => (assertion: BinaryVectorPropertyAssertion) => void
+  <R>(message: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorPropertyAssertion<R>) => void

@@ -1,22 +1,29 @@
 import { expect } from 'chai'
+import { VectorLike } from '../../src/vector'
+import { getComponentsAsTuple } from '../../src/vector/Utils'
 import { UnaryVectorAssertion } from './checkers'
 
-export type FunctionBasedUnaryVectorAssertion = (f: (a: number) => number) => UnaryVectorAssertion
+export type FunctionBasedUnaryVectorAssertion = (f: (a: number) => number) => UnaryVectorAssertion<VectorLike>
 
-export const mapAssertion: FunctionBasedUnaryVectorAssertion = f => (v, r) => {
-  expect(r.x).to.equal(f(v.x))
-  expect(r.y).to.equal(f(v.y))
-}
+const doAssertion:
+  (assertion: (f: (a: number) => number) => UnaryVectorAssertion<[number, number]>)
+    => FunctionBasedUnaryVectorAssertion =
+  assertion => f => (v, r) => assertion(f)(v, getComponentsAsTuple(r))
 
-export const mapXAssertion: FunctionBasedUnaryVectorAssertion = f => (v, r) => {
-  expect(r.x).to.equal(f(v.x))
-  expect(r.y).to.equal(v.y)
-}
+const mapAssertion = doAssertion(f => (v, [x, y]) => {
+  expect(x).to.equal(f(v.x))
+  expect(y).to.equal(f(v.y))
+})
 
-export const mapYAssertion: FunctionBasedUnaryVectorAssertion = f => (v, r) => {
-  expect(r.x).to.equal(v.x)
-  expect(r.y).to.equal(f(v.y))
-}
+const mapXAssertion = doAssertion(f => (v, [x, y]) => {
+  expect(x).to.equal(f(v.x))
+  expect(y).to.equal(v.y)
+})
+
+const mapYAssertion = doAssertion(f => (v, [x, y]) => {
+  expect(x).to.equal(v.x)
+  expect(y).to.equal(f(v.y))
+})
 
 export interface FunctionBasedUnaryVectorAssertionDefinition {
   assertion: FunctionBasedUnaryVectorAssertion

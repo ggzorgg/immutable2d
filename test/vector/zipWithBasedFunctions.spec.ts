@@ -1,5 +1,6 @@
 import { zip } from 'lodash'
 import * as ops from '../../src/vector'
+import { VectorLike } from '../../src/vector'
 import { assertWithAllVectorKindsBinary, BinaryVectorOperation } from './checkers'
 import { allZipWithLikeAssertions, FunctionBasedBinaryVectorAssertionDefinition } from './zipWithAssertions'
 
@@ -28,7 +29,7 @@ const zipWithLikeBasedFunctions = [
 
 zipWithLikeBasedFunctions.forEach(definition => {
   zip(definition.zipWithFunctions, allZipWithLikeAssertions)
-    .map(([fu, z]) => [fu, z] as [BinaryVectorOperation, FunctionBasedBinaryVectorAssertionDefinition])
+    .map(([fu, z]) => [fu, z] as [BinaryVectorOperation<VectorLike>, FunctionBasedBinaryVectorAssertionDefinition])
     .forEach(([func, zipWithAssertion]) => {
       describe(`The "${definition.name}${zipWithAssertion.suffix}" function`, () => {
         assertWithAllVectorKindsBinary(

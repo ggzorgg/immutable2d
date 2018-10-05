@@ -35,7 +35,7 @@ exports.assertWithAllVectorKindsUnary = (msg, operation) => assertion => {
   namedKindsExamples.forEach(([name, example]) => {
     it(`${msg} when called with a ${name}`, () => {
       const result = operation(example)
-      assertion(getComponentsAsObject(example), getComponentsAsObject(result))
+      assertion(getComponentsAsObject(example), result)
     })
   })
 }
@@ -46,7 +46,7 @@ exports.checkPropertyWithAllVectorKindsUnary = (msg, operation) => assertion => 
       fc.assert(
         fc.property(kind, value => {
           const result = operation(value)
-          assertion(getComponentsAsObject(value), getComponentsAsObject(result))
+          assertion(getComponentsAsObject(value), result)
         })
       )
     })
@@ -57,7 +57,7 @@ exports.assertWithAllVectorKindsBinary = (msg, operation) => assertion => {
   namedKindsExamplesPairs.forEach(([[name1, example1], [name2, example2]]) => {
     it(`${msg} when called with a ${name1} and a ${name2}`, () => {
       const result = operation(example1, example2)
-      assertion(getComponentsAsObject(example1), getComponentsAsObject(example2), getComponentsAsObject(result))
+      assertion(getComponentsAsObject(example1), getComponentsAsObject(example2), result)
     })
   })
 }
@@ -68,7 +68,7 @@ exports.checkPropertyWithAllVectorKindsBinary = (msg, operation) => assertion =>
       fc.assert(
         fc.property(kind1, kind2, (value1, value2) => {
           const result = operation(value1, value2)
-          assertion(getComponentsAsObject(value1), getComponentsAsObject(value2), getComponentsAsObject(result))
+          assertion(getComponentsAsObject(value1), getComponentsAsObject(value2), result)
         })
       )
     })

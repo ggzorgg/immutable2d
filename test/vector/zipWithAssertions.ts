@@ -1,22 +1,30 @@
 import { expect } from 'chai'
+import { VectorLike } from '../../src/vector'
+import { getComponentsAsTuple } from '../../src/vector/Utils'
 import { BinaryVectorAssertion } from './checkers'
 
-export type FunctionBasedBinaryVectorAssertion = (f: (a: number, b: number) => number) => BinaryVectorAssertion
+export type FunctionBasedBinaryVectorAssertion =
+  (f: (a: number, b: number) => number) => BinaryVectorAssertion<VectorLike>
 
-const zipWithAssertion: FunctionBasedBinaryVectorAssertion = f => (v1, v2, r) => {
-  expect(r.x).to.equal(f(v1.x, v2.x))
-  expect(r.y).to.equal(f(v1.y, v2.y))
-}
+const doAssertion:
+  (assertion: (f: (a: number, b: number) => number) => BinaryVectorAssertion<[number, number]>)
+    => FunctionBasedBinaryVectorAssertion =
+  assertion => f => (v1, v2, r) => assertion(f)(v1, v2, getComponentsAsTuple(r))
 
-const zipWithXAssertion: FunctionBasedBinaryVectorAssertion = f => (v1, v2, r) => {
-  expect(r.x).to.equal(f(v1.x, v2.x))
-  expect(r.y).to.equal(v1.y)
-}
+const zipWithAssertion = doAssertion(f => (v1, v2, [x, y]) => {
+  expect(x).to.equal(f(v1.x, v2.x))
+  expect(y).to.equal(f(v1.y, v2.y))
+})
 
-const zipWithYAssertion: FunctionBasedBinaryVectorAssertion = f => (v1, v2, r) => {
-  expect(r.x).to.equal(v1.x)
-  expect(r.y).to.equal(f(v1.y, v2.y))
-}
+const zipWithXAssertion = doAssertion(f => (v1, v2, [x, y]) => {
+  expect(x).to.equal(f(v1.x, v2.x))
+  expect(y).to.equal(v1.y)
+})
+
+const zipWithYAssertion = doAssertion(f => (v1, v2, [x, y]) => {
+  expect(x).to.equal(v1.x)
+  expect(y).to.equal(f(v1.y, v2.y))
+})
 
 export interface FunctionBasedBinaryVectorAssertionDefinition {
   assertion: FunctionBasedBinaryVectorAssertion
