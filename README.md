@@ -131,7 +131,7 @@ const v4 = addX(v1, [30, 30]) // Vector { x: 40, y: 10 }
 The `fold`, `map` and `zipWith` functions let you define custom operators easily. In fact, many operations can be defined in terms of these three:
 
 ```typescript
-import { flip, map, toVector, zipWith } from 'immutable2d/vector'
+import { fold, map, toVector, zipWith } from 'immutable2d/vector'
 
 const flip2 = fold((x, y) => toVector(y, x))
 const negate2 = map(a => -a)
