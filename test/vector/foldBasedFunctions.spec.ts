@@ -1,4 +1,4 @@
-import { fold, foldX, foldY } from '../../src/vector'
+import { flip, fold, foldX, foldY, toVector, Vector } from '../../src/vector'
 import { testFoldBasedFunction, testFoldXBasedFunction, testFoldYBasedFunction } from './foldAssertions'
 
 const f = (a: number, b: number) => a + b
@@ -28,3 +28,12 @@ const foldYDescription = {
 testFoldBasedFunction(foldDescription)
 testFoldXBasedFunction(foldXDescription)
 testFoldYBasedFunction(foldYDescription)
+
+const flipDescription = {
+  name: 'flip',
+  action: 'flipped components vector',
+  parameterFunction: ((a, b) => toVector(b, a)) as (a: number, b: number) => Vector,
+  foldFunction: flip
+}
+
+testFoldBasedFunction(flipDescription)
