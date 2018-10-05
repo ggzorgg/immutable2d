@@ -11,11 +11,5 @@ type BinaryVectorPropertyAssertion<R> = (v1: VectorObject, v2: VectorObject, r: 
 export declare const assertWithAllVectorKindsUnary:
   <R>(assertionMessage: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorAssertion<R>) => void
 
-export declare const checkPropertyWithAllVectorKindsUnary:
-  <R>(assertionMessage: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorPropertyAssertion<R>) => void
-
 export declare const assertWithAllVectorKindsBinary:
   <R>(assertionMessage: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorAssertion<R>) => void
-
-export declare const checkPropertyWithAllVectorKindsBinary:
-  <R>(assertionMessage: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorPropertyAssertion<R>) => void
