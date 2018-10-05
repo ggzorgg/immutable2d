@@ -3,7 +3,7 @@ import { divide } from './mapBasedFunctions'
 import { toVector } from './toVector'
 import { VectorLike } from './types'
 
-export const flip = fold((a, b) => toVector(b, a))
-export const lengthSquared = fold((a, b) => a * a + b * b)
-export const length = fold((a, b) => Math.sqrt(a * a + b * b))
+export const flip = fold((x, y) => toVector(y, x))
+export const lengthSquared = fold((x, y) => x * x + y * y)
+export const length = fold((x, y) => Math.sqrt(x * x + y * y))
 export const normalize = (v: VectorLike) => divide(length(v), v)
