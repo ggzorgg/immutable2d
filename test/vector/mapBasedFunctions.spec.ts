@@ -1,8 +1,9 @@
 import { zip } from 'lodash'
 import * as ops from '../../src/vector'
 import { VectorLike } from '../../src/vector'
-import { assertWithAllVectorKindsUnary, UnaryVectorOperation } from './checkers'
-import { allMapLikeAssertions, FunctionBasedUnaryVectorAssertionDefinition } from './mapAssertions'
+import { UnaryVectorOperation } from './assertionTypes'
+import { assertWithAllVectorKindsUnary } from './checkers'
+import { allMapLikeAssertions, MapLikeAssertionDefinition } from './mapAssertions'
 
 type UnaryNumberFunction = (a: number) => number
 const f = (a => a * 2) as UnaryNumberFunction
@@ -44,7 +45,7 @@ const mapLikeBasedFunctions = [
 
 mapLikeBasedFunctions.forEach(definition => {
   zip(definition.mapFunctions, allMapLikeAssertions)
-    .map(([fun, m]) => [fun, m] as [UnaryVectorOperation<VectorLike>, FunctionBasedUnaryVectorAssertionDefinition])
+    .map(([fun, m]) => [fun, m] as [UnaryVectorOperation<VectorLike>, MapLikeAssertionDefinition])
     .forEach(([func, mapAssertion]) => {
       describe(`The "${definition.name}${mapAssertion.suffix}" function`, () => {
         assertWithAllVectorKindsUnary(

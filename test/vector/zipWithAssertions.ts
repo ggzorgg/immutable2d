@@ -1,14 +1,11 @@
 import { expect } from 'chai'
 import { VectorLike } from '../../src/vector'
 import { getComponentsAsTuple } from '../../src/vector/Utils'
-import { BinaryVectorAssertion } from './checkers'
-
-export type FunctionBasedBinaryVectorAssertion =
-  (f: (a: number, b: number) => number) => BinaryVectorAssertion<VectorLike>
+import { BinaryFunctionBasedBinaryVectorAssertion, BinaryVectorAssertion } from './assertionTypes'
 
 const doAssertion:
   (assertion: (f: (a: number, b: number) => number) => BinaryVectorAssertion<[number, number]>)
-    => FunctionBasedBinaryVectorAssertion =
+    => BinaryFunctionBasedBinaryVectorAssertion<number, VectorLike> =
   assertion => f => (v1, v2, r) => assertion(f)(v1, v2, getComponentsAsTuple(r))
 
 const zipWithAssertion = doAssertion(f => (v1, v2, [x, y]) => {
@@ -26,12 +23,12 @@ const zipWithYAssertion = doAssertion(f => (v1, v2, [x, y]) => {
   expect(y).to.equal(f(v1.y, v2.y))
 })
 
-export interface FunctionBasedBinaryVectorAssertionDefinition {
-  assertion: FunctionBasedBinaryVectorAssertion
+export interface ZipWithLikeAssertionDefinition {
+  assertion: BinaryFunctionBasedBinaryVectorAssertion<number, VectorLike>
   predicate: string
   suffix: string
 }
-export const allZipWithLikeAssertions: FunctionBasedBinaryVectorAssertionDefinition[] = [
+export const allZipWithLikeAssertions: ZipWithLikeAssertionDefinition[] = [
   {
     assertion: zipWithAssertion,
     predicate: 'applied component-wise',

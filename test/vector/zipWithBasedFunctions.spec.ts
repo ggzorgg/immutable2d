@@ -1,8 +1,9 @@
 import { zip } from 'lodash'
 import * as ops from '../../src/vector'
 import { VectorLike } from '../../src/vector'
-import { assertWithAllVectorKindsBinary, BinaryVectorOperation } from './checkers'
-import { allZipWithLikeAssertions, FunctionBasedBinaryVectorAssertionDefinition } from './zipWithAssertions'
+import { BinaryVectorOperation } from './assertionTypes'
+import { assertWithAllVectorKindsBinary } from './checkers'
+import { allZipWithLikeAssertions, ZipWithLikeAssertionDefinition } from './zipWithAssertions'
 
 type BinaryNumberFunction = (a: number, b: number) => number
 const f = ((a, b) => a * b) as BinaryNumberFunction
@@ -29,7 +30,7 @@ const zipWithLikeBasedFunctions = [
 
 zipWithLikeBasedFunctions.forEach(definition => {
   zip(definition.zipWithFunctions, allZipWithLikeAssertions)
-    .map(([fu, z]) => [fu, z] as [BinaryVectorOperation<VectorLike>, FunctionBasedBinaryVectorAssertionDefinition])
+    .map(([fu, z]) => [fu, z] as [BinaryVectorOperation<VectorLike>, ZipWithLikeAssertionDefinition])
     .forEach(([func, zipWithAssertion]) => {
       describe(`The "${definition.name}${zipWithAssertion.suffix}" function`, () => {
         assertWithAllVectorKindsBinary(
