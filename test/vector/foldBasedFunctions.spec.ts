@@ -1,4 +1,4 @@
-import { flip, fold, foldX, foldY, lengthSquared, toVector, Vector } from '../../src/vector'
+import { flip, fold, foldX, foldY, length, lengthSquared, toVector, Vector } from '../../src/vector'
 import { testFoldBasedFunction, testFoldXBasedFunction, testFoldYBasedFunction } from './foldAssertions'
 
 const f = (a: number, b: number) => a + b
@@ -46,3 +46,12 @@ const lengthSquaredDescription = {
 }
 
 testFoldBasedFunction(lengthSquaredDescription)
+
+const lengthFunctionDescription = {
+  name: 'length',
+  action: 'length of the vector',
+  parameterFunction: ((a, b) => Math.sqrt(a * a + b * b)) as (a: number, b: number) => number,
+  foldFunction: length
+}
+
+testFoldBasedFunction(lengthFunctionDescription)
