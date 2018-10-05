@@ -20,7 +20,7 @@ export function testFoldBasedFunction<R>(description: FoldLikeBasedFunctionDescr
       `should return the ${description.action} using both components`,
       description.foldFunction
     )((v, r) => {
-      expect(r).to.be.equal(description.parameterFunction(v.x, v.y))
+      expect(r).to.deep.equal(description.parameterFunction(v.x, v.y))
     })
   })
 }
@@ -33,7 +33,7 @@ const testSingleComponentFoldBasedFunction =
         `should return the ${description.action} using only the ${componentName} component`,
         description.foldFunction
       )((v, r) => {
-        expect(r).to.be.equal(description.parameterFunction(componentGetter(v)))
+        expect(r).to.deep.equal(description.parameterFunction(componentGetter(v)))
       })
     })
   }
