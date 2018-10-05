@@ -31,18 +31,18 @@ function createAllPairs(a) {
 const namedKindsExamplesPairs = createAllPairs(namedKindsExamples)
 const namedKindsArbitrariesPairs = createAllPairs(namedArbitraries)
 
-exports.assertWithAllVectorKindsUnary = (msg, operation) => assertion => {
-  namedKindsExamples.forEach(([name, example]) => {
-    it(`${msg} when called with a ${name}`, () => {
+exports.assertWithAllVectorKindsUnary = (assertionMessage, operation) => assertion => {
+  namedKindsExamples.forEach(([kindName, example]) => {
+    it(`${assertionMessage} when called with a ${kindName}`, () => {
       const result = operation(example)
       assertion(getComponentsAsObject(example), result)
     })
   })
 }
 
-exports.checkPropertyWithAllVectorKindsUnary = (msg, operation) => assertion => {
-  namedArbitraries.forEach(([name, kind]) => {
-    it(`${msg} when called with a ${name}`, () => {
+exports.checkPropertyWithAllVectorKindsUnary = (assertionMessage, operation) => assertion => {
+  namedArbitraries.forEach(([kindName, kind]) => {
+    it(`${assertionMessage} when called with a ${kindName}`, () => {
       fc.assert(
         fc.property(kind, value => {
           const result = operation(value)
@@ -53,18 +53,18 @@ exports.checkPropertyWithAllVectorKindsUnary = (msg, operation) => assertion => 
   })
 }
 
-exports.assertWithAllVectorKindsBinary = (msg, operation) => assertion => {
-  namedKindsExamplesPairs.forEach(([[name1, example1], [name2, example2]]) => {
-    it(`${msg} when called with a ${name1} and a ${name2}`, () => {
+exports.assertWithAllVectorKindsBinary = (assertionMessage, operation) => assertion => {
+  namedKindsExamplesPairs.forEach(([[kindName1, example1], [kindName2, example2]]) => {
+    it(`${assertionMessage} when called with a ${kindName1} and a ${kindName2}`, () => {
       const result = operation(example1, example2)
       assertion(getComponentsAsObject(example1), getComponentsAsObject(example2), result)
     })
   })
 }
 
-exports.checkPropertyWithAllVectorKindsBinary = (msg, operation) => assertion => {
-  namedKindsArbitrariesPairs.forEach(([[name1, kind1], [name2, kind2]]) => {
-    it(`${msg} when called with a ${name1} and a ${name2}`, () => {
+exports.checkPropertyWithAllVectorKindsBinary = (assertionMessage, operation) => assertion => {
+  namedKindsArbitrariesPairs.forEach(([[kindName1, kind1], [kindName2, kind2]]) => {
+    it(`${assertionMessage} when called with a ${kindName1} and a ${kindName2}`, () => {
       fc.assert(
         fc.property(kind1, kind2, (value1, value2) => {
           const result = operation(value1, value2)

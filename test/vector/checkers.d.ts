@@ -9,13 +9,13 @@ type BinaryVectorAssertion<R> = (v1: VectorObject, v2: VectorObject, r: R) => vo
 type BinaryVectorPropertyAssertion<R> = (v1: VectorObject, v2: VectorObject, r: R) => boolean
 
 export declare const assertWithAllVectorKindsUnary:
-  <R>(message: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorAssertion<R>) => void
+  <R>(assertionMessage: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorAssertion<R>) => void
 
 export declare const checkPropertyWithAllVectorKindsUnary:
-  <R>(message: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorPropertyAssertion<R>) => void
+  <R>(assertionMessage: string, operation: UnaryVectorOperation<R>) => (assertion: UnaryVectorPropertyAssertion<R>) => void
 
 export declare const assertWithAllVectorKindsBinary:
-  <R>(message: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorAssertion<R>) => void
+  <R>(assertionMessage: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorAssertion<R>) => void
 
 export declare const checkPropertyWithAllVectorKindsBinary:
-  <R>(message: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorPropertyAssertion<R>) => void
+  <R>(assertionMessage: string, operation: BinaryVectorOperation<R>) => (assertion: BinaryVectorPropertyAssertion<R>) => void
