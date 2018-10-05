@@ -114,7 +114,7 @@ const v4 = addX(v1, [30, 30]) // Vector { x: 40, y: 10 }
   - [lengthSquared](./docs/Vector.md#lengthSquared): Gets the squared length of a Vector.
   - [negate](./docs/Vector.md#negate): Negates both components.
   - [normalize](./docs/Vector.md#normalize): Normalizes a vector.
-  - [rotate](./docs/Vector.md#rotate): Rotates the vector by a rotation angle given in degrees.
+  - [rotate](./docs/Vector.md#rotate): Rotates the vector clockwise by a rotation angle given in degrees.
   - [rotateRadians](./docs/Vector.md#rotateRadians): Same as rotate, but in radians.
 - Binary operators:
   - Basic:
