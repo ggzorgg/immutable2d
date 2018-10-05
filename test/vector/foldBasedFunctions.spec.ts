@@ -1,6 +1,6 @@
 import {
   flip, fold, foldX, foldY,
-  length, lengthSquared, normalize, toVector, Vector, VectorLike
+  getX, getY, length, lengthSquared, normalize, toVector, Vector, VectorLike
 } from '../../src/vector'
 import { testFoldBasedFunction, testFoldXBasedFunction, testFoldYBasedFunction } from './foldAssertions'
 
@@ -70,3 +70,21 @@ const normalizeFunctionDescription = {
 }
 
 testFoldBasedFunction(normalizeFunctionDescription)
+
+const getXFunctionDescription = {
+  name: 'getX',
+  action: 'X component',
+  parameterFunction: (a => a) as (a: number) => number,
+  foldFunction: getX
+}
+
+testFoldXBasedFunction(getXFunctionDescription)
+
+const getYFunctionDescription = {
+  name: 'getY',
+  action: 'Y component',
+  parameterFunction: (b => b) as (b: number) => number,
+  foldFunction: getY
+}
+
+testFoldYBasedFunction(getYFunctionDescription)
