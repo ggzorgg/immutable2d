@@ -1,4 +1,7 @@
-import { flip, fold, foldX, foldY, length, lengthSquared, toVector, Vector } from '../../src/vector'
+import {
+  flip, fold, foldX, foldY,
+  length, lengthSquared, normalize, toVector, Vector, VectorLike
+} from '../../src/vector'
 import { testFoldBasedFunction, testFoldXBasedFunction, testFoldYBasedFunction } from './foldAssertions'
 
 const f = (a: number, b: number) => a + b
@@ -55,3 +58,15 @@ const lengthFunctionDescription = {
 }
 
 testFoldBasedFunction(lengthFunctionDescription)
+
+const normalizeFunctionDescription = {
+  name: 'normalize',
+  action: 'normalized vector',
+  parameterFunction: ((a, b) => {
+    const vectorLength = Math.sqrt(a * a + b * b)
+    return toVector(a / vectorLength, b / vectorLength)
+  }) as (a: number, b: number) => VectorLike,
+  foldFunction: normalize
+}
+
+testFoldBasedFunction(normalizeFunctionDescription)
