@@ -2,6 +2,8 @@ export * from './types'
 export * from './toVector'
 export * from './Vector'
 
+export * from './functions'
+
 export * from './fold'
 export * from './foldBasedFunctions'
 
