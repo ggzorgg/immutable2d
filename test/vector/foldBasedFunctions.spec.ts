@@ -1,7 +1,8 @@
 import {
   flip, fold, foldX, foldY,
-  getX, getY, length, lengthSquared, normalize, toVector, Vector, VectorLike
+  getX, getY, length, lengthSquared, normalize, rotate, rotateRadians, toVector, Vector, VectorLike
 } from '../../src/vector'
+import { UnaryVectorOperation } from './assertionTypes'
 import { testFoldBasedFunction, testFoldXBasedFunction, testFoldYBasedFunction } from './foldAssertions'
 
 const f = (a: number, b: number) => a + b
@@ -88,3 +89,38 @@ const getYFunctionDescription = {
 }
 
 testFoldYBasedFunction(getYFunctionDescription)
+
+const rotationAngleRadians = Math.PI / 4
+const rotateRadiansFunctionDescription = {
+  name: 'rotateRadians',
+  action: 'rotated vector in radians',
+  parameterFunction: ((a, b) => {
+    const sinA = Math.sin(rotationAngleRadians)
+    const cosA = Math.cos(rotationAngleRadians)
+    const x = a * cosA - b * sinA
+    const y = a * sinA + b * cosA
+
+    return toVector(x, y)
+  }) as (a: number, b: number) => Vector,
+  foldFunction: (v => rotateRadians(rotationAngleRadians, v)) as UnaryVectorOperation<Vector>
+}
+
+testFoldBasedFunction(rotateRadiansFunctionDescription)
+
+const rotationAngleDegrees = 45
+const rotateFunctionDescription = {
+  name: 'rotate',
+  action: 'rotated vector in degrees',
+  parameterFunction: ((a, b) => {
+    const angleRadians = Math.PI / 180 * rotationAngleDegrees
+    const sinA = Math.sin(angleRadians)
+    const cosA = Math.cos(angleRadians)
+    const x = a * cosA - b * sinA
+    const y = a * sinA + b * cosA
+
+    return toVector(x, y)
+  }) as (a: number, b: number) => Vector,
+  foldFunction: (v => rotate(rotationAngleDegrees, v)) as UnaryVectorOperation<Vector>
+}
+
+testFoldBasedFunction(rotateFunctionDescription)
