@@ -1,6 +1,7 @@
 import { expect } from 'chai'
 import 'mocha'
 import { toVector } from '../../src/vector'
+import { getComponentsAsObject } from '../../src/vector/Utils'
 import { assertWithAllVectorKindsUnary } from './checkers'
 
 describe('The "toVector" function', () => {
@@ -13,9 +14,11 @@ describe('The "toVector" function', () => {
     expect(r.y).to.equal(y)
   })
   assertWithAllVectorKindsUnary('should return a Vector with corresponding components', toVector)(
-    (v, r) => {
+    (vector, r) => {
+      const v = getComponentsAsObject(vector)
+
       expect(r.x).to.equal(v.x)
-      expect(r.x).to.equal(v.x)
+      expect(r.y).to.equal(v.y)
     }
   )
 })

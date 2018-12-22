@@ -63,10 +63,17 @@ testFoldBasedFunction(lengthFunctionDescription)
 const normalizeFunctionDescription = {
   name: 'normalize',
   action: 'normalized vector',
-  parameterFunction: ((a, b) => {
+  parameterFunction: ((a, b, isVectorObject) => {
     const vectorLength = Math.sqrt(a * a + b * b)
-    return toVector(a / vectorLength, b / vectorLength)
-  }) as (a: number, b: number) => VectorLike,
+    const x = a / vectorLength
+    const y = b / vectorLength
+
+    if (isVectorObject) {
+      return toVector(x, y)
+    } else {
+      return [x, y]
+    }
+  }) as (a: number, b: number, isVectorObject: boolean) => VectorLike,
   foldFunction: normalize
 }
 
@@ -94,14 +101,18 @@ const rotationAngleRadians = Math.PI / 4
 const rotateRadiansFunctionDescription = {
   name: 'rotateRadians',
   action: 'rotated vector in radians',
-  parameterFunction: ((a, b) => {
+  parameterFunction: ((a, b, isVectorObject) => {
     const sinA = Math.sin(rotationAngleRadians)
     const cosA = Math.cos(rotationAngleRadians)
     const x = a * cosA - b * sinA
     const y = a * sinA + b * cosA
 
-    return toVector(x, y)
-  }) as (a: number, b: number) => Vector,
+    if (isVectorObject) {
+      return toVector(x, y)
+    } else {
+      return [x, y]
+    }
+  }) as (a: number, b: number, isVectorObject: boolean) => Vector,
   foldFunction: (v => rotateRadians(rotationAngleRadians, v)) as UnaryVectorOperation<Vector>
 }
 
@@ -111,15 +122,19 @@ const rotationAngleDegrees = 45
 const rotateFunctionDescription = {
   name: 'rotate',
   action: 'rotated vector in degrees',
-  parameterFunction: ((a, b) => {
+  parameterFunction: ((a, b, isVectorObject) => {
     const angleRadians = Math.PI / 180 * rotationAngleDegrees
     const sinA = Math.sin(angleRadians)
     const cosA = Math.cos(angleRadians)
     const x = a * cosA - b * sinA
     const y = a * sinA + b * cosA
 
-    return toVector(x, y)
-  }) as (a: number, b: number) => Vector,
+    if (isVectorObject) {
+      return toVector(x, y)
+    } else {
+      return [x, y]
+    }
+  }) as (a: number, b: number, isVectorObject: boolean) => VectorLike,
   foldFunction: (v => rotate(rotationAngleDegrees, v)) as UnaryVectorOperation<Vector>
 }
 

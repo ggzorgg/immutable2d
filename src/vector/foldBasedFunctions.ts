@@ -1,6 +1,7 @@
 import { fold, foldX, foldY } from './fold'
 import { toVector } from './toVector'
 import { VectorLike } from './types'
+import { isVectorObject } from './Utils'
 
 export const flip = fold((x, y) => toVector(y, x))
 
@@ -21,5 +22,9 @@ export const rotateRadians = (angle: number, v: VectorLike) => fold((x, y) => {
   const nx = x * cosA - y * sinA
   const ny = x * sinA + y * cosA
 
-  return toVector(nx, ny)
+  if (isVectorObject(v)) {
+    return { x: nx, y: ny } as VectorLike
+  } else {
+    return [nx, ny] as VectorLike
+  }
 })(v)

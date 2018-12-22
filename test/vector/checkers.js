@@ -1,5 +1,4 @@
 const { it } = require('mocha')
-const { getComponentsAsObject } = require('../../src/vector/Utils')
 const { Vector } = require('../../src/vector/')
 const { zip } = require('lodash')
 
@@ -28,7 +27,7 @@ exports.assertWithAllVectorKindsUnary = (assertionMessage, operation) => asserti
   namedKindsExamples.forEach(([kindName, example]) => {
     it(`${assertionMessage} when called with a ${kindName}`, () => {
       const result = operation(example)
-      assertion(getComponentsAsObject(example), result)
+      assertion(example, result)
     })
   })
 }
@@ -37,7 +36,7 @@ exports.assertWithAllVectorKindsBinary = (assertionMessage, operation) => assert
   namedKindsExamplesPairs.forEach(([[kindName1, example1], [kindName2, example2]]) => {
     it(`${assertionMessage} when called with a ${kindName1} and a ${kindName2}`, () => {
       const result = operation(example1, example2)
-      assertion(getComponentsAsObject(example1), getComponentsAsObject(example2), result)
+      assertion(example1, example2, result)
     })
   })
 }
